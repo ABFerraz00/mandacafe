@@ -133,13 +133,17 @@ app.get('/api/health', async (req, res) => {
 try {
     const cardapioRoutes = require('./routes/cardapio');
     const adminRoutes = require('./routes/admin');
+    const authRoutes = require('./routes/auth');
     
     app.use('/api', cardapioRoutes);
     app.use('/api/admin', adminRoutes);
+    app.use('/api/auth', authRoutes);
     
-    console.log('✅ Rotas carregadas com sucesso');
+    logger.info('Rotas carregadas com sucesso', {
+        routes: ['cardapio', 'admin', 'auth']
+    });
 } catch (error) {
-    console.error('❌ Erro ao carregar rotas:', error);
+    logger.error('Erro ao carregar rotas', { error: error.message });
 }
 
 // Middleware para tratamento de rotas não encontradas
