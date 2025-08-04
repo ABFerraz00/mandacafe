@@ -1,0 +1,22 @@
+[
+  {
+    "id_categoria": 1,
+    "nome_categoria": "Entradas",
+    "ordem_exibicao": 1
+  },
+  {
+    "id_categoria": 2,
+    "nome_categoria": "Pratos Principais",
+    "ordem_exibicao": 2
+  },
+  {
+    "id_categoria": 3,
+    "nome_categoria": "Sobremesas",
+    "ordem_exibicao": 3
+  },
+  {
+    "id_categoria": 4,
+    "nome_categoria": "Bebidas",
+    "ordem_exibicao": 4
+  }
+]

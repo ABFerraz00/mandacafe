@@ -1,0 +1,51 @@
+// Schema Prisma para Sistema de Gerenciamento de Restaurante
+// Migração de arquivos JSON para PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Modelo para Categorias
+model Categoria {
+  id_categoria    Int     @id @default(autoincrement())
+  nome_categoria  String  @db.VarChar(100)
+  ordem_exibicao  Int
+  
+  // Relacionamento com pratos
+  pratos          Prato[]
+  
+  // Índices para performance
+  @@index([ordem_exibicao])
+  @@map("categorias")
+}
+
+// Modelo para Pratos
+model Prato {
+  id_prato       Int      @id @default(autoincrement())
+  codigo_prato   String   @unique @db.VarChar(20)
+  nome_prato     String   @db.VarChar(200)
+  descricao      String   @db.Text
+  preco          Decimal  @db.Decimal(10, 2)
+  disponivel     Boolean  @default(true)
+  id_categoria   Int
+  tipo_item      String   @default("Cardápio") @db.VarChar(50)
+  
+  // Timestamps para auditoria
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+  
+  // Relacionamento com categoria
+  categoria      Categoria @relation(fields: [id_categoria], references: [id_categoria])
+  
+  // Índices para performance
+  @@index([id_categoria])
+  @@index([disponivel])
+  @@index([codigo_prato])
+  @@map("pratos")
+}
+

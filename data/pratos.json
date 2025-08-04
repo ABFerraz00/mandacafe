@@ -1,0 +1,42 @@
+[
+  {
+    "id_prato": 1,
+    "codigo_prato": "PRATO001",
+    "nome_prato": "Bruschetta Italiana",
+    "descricao": "Pão italiano tostado com tomate, manjericão e azeite extra virgem",
+    "preco": 18.9,
+    "disponivel": true,
+    "id_categoria": 1,
+    "tipo_item": "Cardápio"
+  },
+  {
+    "id_prato": 2,
+    "codigo_prato": "PRATO002",
+    "nome_prato": "Salmão Grelhado",
+    "descricao": "Filé de salmão grelhado com legumes e molho de ervas",
+    "preco": 45.9,
+    "disponivel": true,
+    "id_categoria": 2,
+    "tipo_item": "Cardápio"
+  },
+  {
+    "id_prato": 3,
+    "codigo_prato": "PRATO003",
+    "nome_prato": "Tiramisu",
+    "descricao": "Sobremesa italiana tradicional com café e mascarpone",
+    "preco": 16.9,
+    "disponivel": false,
+    "id_categoria": 3,
+    "tipo_item": "Cardápio"
+  },
+  {
+    "id_prato": 4,
+    "codigo_prato": "PRATO004",
+    "nome_prato": "Risotto de Camarão",
+    "descricao": "Risotto cremoso com camarões frescos e ervas finas",
+    "preco": 42.9,
+    "disponivel": false,
+    "id_categoria": 2,
+    "tipo_item": "Cardápio"
+  }
+]

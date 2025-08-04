@@ -1,0 +1,58 @@
+# Docker Compose para Desenvolvimento Local
+# Sistema de Gerenciamento de Restaurante
+
+version: '3.8'
+
+services:
+  # Banco de dados PostgreSQL local
+  postgres:
+    image: postgres:15-alpine
+    container_name: restaurante-postgres
+    environment:
+      POSTGRES_DB: restaurante_db
+      POSTGRES_USER: restaurante_user
+      POSTGRES_PASSWORD: restaurante_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./prisma/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U restaurante_user -d restaurante_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Aplicação Node.js
+  app:
+    build: .
+    container_name: restaurante-app
+    environment:
+      DATABASE_URL: "postgresql://restaurante_user:restaurante_pass@postgres:5432/restaurante_db?sslmode=disable"
+      NODE_ENV: development
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev
+
+  # Prisma Studio (opcional)
+  prisma-studio:
+    build: .
+    container_name: restaurante-prisma-studio
+    environment:
+      DATABASE_URL: "postgresql://restaurante_user:restaurante_pass@postgres:5432/restaurante_db?sslmode=disable"
+    ports:
+      - "5555:5555"
+    depends_on:
+      - postgres
+    command: npx prisma studio --port 5555 --hostname 0.0.0.0
+
+volumes:
+  postgres_data:
+
