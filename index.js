@@ -56,9 +56,9 @@ app.get('/api/status', async (req, res) => {
     }
 });
 
-// Rota de health check simples para load balancers
+// Rota de health check simples para load balancers (Railway)
 app.get('/health', (req, res) => {
-    res.status(200).send('OK');
+    res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
 // Importar e usar rotas após configurar middlewares
