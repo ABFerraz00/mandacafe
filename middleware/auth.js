@@ -12,8 +12,8 @@ const adminUsers = [
         id: 1,
         username: 'admin',
         email: 'admin@mandacafe.com',
-        // Senha: admin123 (hash gerado com bcrypt)
-        password: '$2a$10$8K1p/a0dclxnGmC.xvfOOeX4w/KqGf9c5s1Jn2b3c4d5e6f7g8h9i0',
+        // Senha: admin123 (hash real gerado com bcrypt)
+        password: '$2b$10$u707Lm1x6l.VmM2lwmf0SeXyuB5deCrtdfjhEjAdv3tTgpcRQHOFm',
         role: 'admin',
         active: true,
         createdAt: new Date('2025-01-01')
@@ -22,8 +22,8 @@ const adminUsers = [
         id: 2,
         username: 'manager',
         email: 'manager@mandacafe.com',
-        // Senha: manager123 (hash gerado com bcrypt)
-        password: '$2a$10$9L2q/b1edlyoHnD.ywgPPfY5x/LrHg0d6t2Ko3c4d5e6f7g8h9i0j1',
+        // Senha: manager123 (hash real gerado com bcrypt)
+        password: '$2b$10$FE0QNTADKNCbYWlpXM9.GeoyYqr5D1R/esYvtVduhh/FHNfNB.U5i',
         role: 'manager',
         active: true,
         createdAt: new Date('2025-01-01')
