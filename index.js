@@ -2,6 +2,7 @@
  * Servidor Express.js para o Módulo de Gerenciamento de Cardápio
  * Plataforma de Gerenciamento de Restaurante
  * Versão 2.0 - PostgreSQL + Prisma
+ * Atualizado: 2025-08-04 - Banco populado com dados
  */
 
 const express = require('express');
